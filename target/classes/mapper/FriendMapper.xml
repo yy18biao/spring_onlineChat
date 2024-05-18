@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.chat.mapper.FriendMapper">
+    <select id="selectFriendList" resultType="com.example.chat.entity.Friend">
+        select userId as friendId, username as friendName, photo as friendPhoto from user
+        where userId in
+              (select friendId from friend where userId = #{userId} and state=1)
+    </select>
+</mapper>

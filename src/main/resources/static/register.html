@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请注册</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <div class="whole">
+        <div class="center">
+            <h3>注册</h3>
+            <div class="row">
+                <span>用户名</span>
+                <input type="text" id="username">
+            </div>
+            <div class="row">
+                <span>密码</span>
+                <input type="password" id="password">
+            </div>
+            <div class="row">
+                <span>再次确认密码</span>
+                <input type="password" id="password2">
+            </div>
+            <div class="row">
+                <button id="submit" onclick="reg()">注册</button>
+            </div>
+            <div class="row">
+                <button id="submit" onclick="login()">返回</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+        function login(){
+            location.href = "login.html";
+        }
+
+        function reg(){
+            let username = document.querySelector('#username').value;
+            let password = document.querySelector('#password').value;
+            let password2 = document.querySelector('#password2').value;
+            if (username == '' || password == '') {
+                alert('您输入的用户名或密码为空!');
+                return;
+            }
+            if(password != password2){
+                alert('两次密码不一致');
+                return;
+            }
+
+            // 2. 发送 ajax 请求
+            $.ajax({
+                type: 'post',
+                url: '/register',
+                data: {
+                    username: username,
+                    password: password
+                },
+                success: function(body) {
+                    if (body && body.userId > 0) {
+                        alert('注册成功');
+                        location.assign('/login.html');
+                    } else {
+                        alert('注册失败');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

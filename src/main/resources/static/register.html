@@ -34,7 +34,7 @@
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script>
         function login(){
-            location.href = "login.html";
+            location.href = "index.html";
         }
 
         function reg(){
@@ -61,7 +61,7 @@
                 success: function(body) {
                     if (body && body.userId > 0) {
                         alert('注册成功');
-                        location.assign('/login.html');
+                        location.assign('/index.html');
                     } else {
                         alert('注册失败');
                     }

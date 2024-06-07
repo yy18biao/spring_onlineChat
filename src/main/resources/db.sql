@@ -9,7 +9,7 @@ create table user(
                      userId int AUTO_INCREMENT PRIMARY key,
                      username varchar(50) NOT null unique,
                      password varchar(100) NOT null,
-    photo varchar(100) not null
+    photo varchar(100) not null default 'waiting.jpg'
 );
 /* 插入测试用例 */
 INSERT into user VALUES(null, 'zhangsan', '111', 'waiting.jpg');

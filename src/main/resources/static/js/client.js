@@ -245,7 +245,7 @@ function getUserInfo() {
                 userDiv.setAttribute("user-id", body.userId);
             } else {
                 alert("当前用户未登录!");
-                location.assign('login.html');
+                location.assign('index.html');
             }
         }
     });
